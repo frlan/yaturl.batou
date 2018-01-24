@@ -32,7 +32,6 @@ class Nginx(batou.component.Component):
 
     def configure(self):
         self.yaturl = self.require_one('yaturl')
-        self += batou.lib.file.File('yaturl.conf')
 
         self.address = batou.utils.Address(self.public_name, 80)
         self.ssl_address = batou.utils.Address(self.public_name, 443)
@@ -54,4 +53,6 @@ class Nginx(batou.component.Component):
 
         self += self.cert
 
-        self += CertCheck('yaturl')
+        self += batou.lib.file.File('yaturl.conf')
+
+ #       self += CertCheck('yaturl')
