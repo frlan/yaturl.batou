@@ -20,6 +20,7 @@ class CertCheck(batou.component.Component):
                 '-p {{component.parent.ssl_address.connect.port}} '
                 '-S --sni -C 14,7'))
 
+@batou_ext.nix.rebuild
 class Nginx(batou.component.Component):
 
     public_name = 'yaturl.net'
