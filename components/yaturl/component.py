@@ -1,5 +1,6 @@
 import batou.component
 
+
 class YatURL(batou.component.Component):
 
     # This is just a meta class as the service is currently running
