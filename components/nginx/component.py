@@ -1,4 +1,5 @@
 from batou.lib.cron import CronTab
+from batou_ext.nix import SensuChecks  # noqa
 import batou.component
 import batou.lib.file
 import batou_ext.nix
