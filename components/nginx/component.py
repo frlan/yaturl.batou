@@ -6,21 +6,6 @@ import batou_ext.nix
 import batou_ext.ssl
 
 
-class CertCheck(batou.component.Component):
-
-    namevar = 'name'
-
-    def configure(self):
-        self += batou.lib.nagios.ServiceCheck(
-            self.expand(
-                'https://{{component.parent.public_name}} certificate valid?'),
-            name=self.expand('ssl_cert_{{component.name}}'),
-            command='check_http',
-            args=self.expand(
-                '-H {{component.parent.ssl_address.connect.host}} '
-                '-p {{component.parent.ssl_address.connect.port}} '
-                '-S --sni -C 14,7'))
-
 @batou_ext.nix.rebuild
 class Nginx(batou.component.Component):
 
@@ -56,5 +41,3 @@ class Nginx(batou.component.Component):
         self += self.cert
 
         self += batou.lib.file.File('yaturl.conf')
-
- #       self += CertCheck('yaturl')
