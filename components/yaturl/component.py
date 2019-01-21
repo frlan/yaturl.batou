@@ -29,3 +29,4 @@ class YatURL(batou.component.Component):
             scan_host = False)
 
         self += self.checkout
+        self += self.checkout.symlink_and_cleanup()
